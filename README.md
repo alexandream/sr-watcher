@@ -3,7 +3,8 @@ screen-resolution-watcher
 
 **This is not fit for *production* use, whatever that may mean. No care at all
 has been put into security, and the machine I run this thing on can handle
-being fucked up, so I didn't quite worry about it. Use it at your own risk**
+being fucked up, so I didn't quite worry about it. Use it at your own risk. So
+far I've had no problems, though.**
 
 Small utility that listens for X11 resolution changes and blocks until such
 event happens.
