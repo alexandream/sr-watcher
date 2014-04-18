@@ -7,7 +7,11 @@ event happens.
 Mainly developed because I needed a way to automatically update some settings
 upon guest operating system (under virtualbox) screen resizing.
 
-Right now, this is how I'm using it
+Right now, there's two ways to use it: as a program which'll block until the
+next resolution change occurs; or as a program which'll call another program
+whenever a screen resolution change occurs;
+
+When used as a simple waiting process, I used to use it like this:
 
     while ~/.bin/wait-for-resolution-change
     do 
@@ -16,7 +20,16 @@ Right now, this is how I'm using it
        	sleep 1s; 
     done&
 
-Its only dependency is xlibs, and I've merely compiled it with
+After adding support for it to call the handler upon change, I started using
+it like this:
+
+    ~/.bin/wait-for-resolution-change 1 ~/.bin/on-resolution-change.sh&
+
+This means it'll call on-resolution-change.sh upon screen resolution change and
+it'll ignore every resolution change within 1 second of another.
+
+Its only dependency is xlibs and a few POSIX library functions, and I've
+merely compiled it with:
 
     gcc wait-for-resolution-change.c `pkg-config --cflags --libs x11` \
-     -o wait-for-resolution-change
+     -o wait-for-resolution-change -std=c99
