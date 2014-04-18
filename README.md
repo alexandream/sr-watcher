@@ -1,6 +1,10 @@
 screen-resolution-watcher
 ==========================
 
+**This is not fit for *production* use, whatever that may mean. No care at all
+has been put into security, and the machine I run this thing on can handle
+being fucked up, so I didn't quite worry about it. Use it at your own risk**
+
 Small utility that listens for X11 resolution changes and blocks until such
 event happens.
 
